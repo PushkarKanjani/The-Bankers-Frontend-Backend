@@ -66,7 +66,7 @@ function App() {
     const newResources = [...resources];
     newResources[index] = value;
     setResources(newResources);
-    addLog(`Vault resource ${['A', 'B', 'C'][index]} updated to ${value}`);
+    addLog(`Bank resource ${['Cash (Lakhs)', 'Gold (KGs)', 'Property (Plots)'][index]} updated to ${value}`);
   };
 
   const handleAllocationChange = (
@@ -78,7 +78,7 @@ function App() {
     newAllocation[processIndex][resourceIndex] = value;
     setAllocation(newAllocation);
     addLog(
-      `Allocation updated: P${processIndex} Resource ${['A', 'B', 'C'][resourceIndex]} = ${value}`
+      `Allocation updated: ${['Raju', 'Shyam', 'Baburao', 'Totla Seth', 'Anuradha'][processIndex]} Resource ${['Cash (Lakhs)', 'Gold (KGs)', 'Property (Plots)'][resourceIndex]} = ${value}`
     );
   };
 
@@ -91,13 +91,13 @@ function App() {
     newMax[processIndex][resourceIndex] = value;
     setMax(newMax);
     addLog(
-      `Max updated: P${processIndex} Resource ${['A', 'B', 'C'][resourceIndex]} = ${value}`
+      `Max updated: ${['Raju', 'Shyam', 'Baburao', 'Totla Seth', 'Anuradha'][processIndex]} Resource ${['Cash (Lakhs)', 'Gold (KGs)', 'Property (Plots)'][resourceIndex]} = ${value}`
     );
   };
 
   const handleCheckSafety = async () => {
     setErrorMessage('');
-    addLog('Running safety audit...');
+    addLog('Running provisioning audit...');
     try {
       const available = calculateAvailableResources();
       const response = await checkSafety(available, allocation, max);
@@ -118,7 +118,7 @@ function App() {
         addLog(`✗ ${response.message}`);
       }
     } catch (error) {
-      addLog(`Error: Failed to check safety - ${error}`);
+      addLog(`Error: Failed to check provisioning - ${error}`);
       setErrorMessage('Failed to connect to server. Is it running?');
     }
   };
@@ -174,11 +174,11 @@ function App() {
       message: '',
     });
     setErrorMessage('');
-    addLog('System reset to default values');
+    addLog('Bank reset to default values');
   };
 
   useEffect(() => {
-    addLog('THE BANK-ERS system initialized');
+    addLog('Laxmi Chit Fund system initialized');
   }, []);
 
   const availableResources = calculateAvailableResources();
@@ -190,11 +190,11 @@ function App() {
         <div className="flex items-center gap-3 mb-2">
           <Database size={40} className="text-green-400" />
           <h1 className="text-4xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            THE BANK-ERS
+            Laxmi Chit Fund
           </h1>
         </div>
         <p className="text-gray-400 text-sm">
-          Financial Trading Terminal - Resource Allocation & Safety Management System
+          21 Din Mein Paisa Double!
         </p>
       </header>
 

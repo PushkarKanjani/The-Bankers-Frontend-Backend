@@ -87,18 +87,18 @@ function isSafe(available, max, allocation) {
     // If we went through all processes and couldn't find one
     // that could run, the system is in an unsafe state.
     if (foundProcess === false) {
-      return { 
-        safe: false, 
-        message: `UNSAFE STATE. Deadlock possible. Could not find next process.` 
+      return {
+        safe: false,
+        message: `DEVA RE DEVA! Bank Kangaal Hone Wala Hai! (Bankrupt Risk!)`
       };
     }
   } // end of while loop
 
   // If we exit the loop, all processes finished successfully.
-  return { 
-    safe: true, 
-    sequence: safeSequence, 
-    message: `✓ System Audit: SAFE. Safe sequence found: [${safeSequence.join(', ')}]` 
+  return {
+    safe: true,
+    sequence: safeSequence,
+    message: `✓ TENSION NAHI LENE KA! Bank Safe Hai. Safe sequence found: [${safeSequence.join(', ')}]`
   };
 }
 
@@ -152,9 +152,9 @@ app.post("/api/request-resource", (req, res) => {
     // Step 1: Check if request <= need
     for (let j = 0; j < numAvailable.length; j++) {
       if (numRequest[j] > need[p][j]) {
-        return res.json({ 
-          granted: false, 
-          message: `DENIED: P${p} request [${numRequest.join(',')}] exceeds its maximum claim [${need[p].join(',')}]` 
+        return res.json({
+          granted: false,
+          message: `LOAN DENIED! Itna paisa thodi dega. Limit me raho!`
         });
       }
     }
@@ -162,9 +162,9 @@ app.post("/api/request-resource", (req, res) => {
     // Step 2: Check if request <= available
     for (let j = 0; j < numAvailable.length; j++) {
       if (numRequest[j] > numAvailable[j]) {
-        return res.json({ 
-          granted: false, 
-          message: `DENIED: P${p} must wait. Request [${numRequest.join(',')}] exceeds available [${numAvailable.join(',')}]` 
+        return res.json({
+          granted: false,
+          message: `LOAN DENIED! Abhi paisa nahi hai. Baad me aa.`
         });
       }
     }
@@ -185,15 +185,15 @@ app.post("/api/request-resource", (req, res) => {
       // If safe, grant the request!
       res.json({
         granted: true,
-        message: `APPROVED: P${p} loan for [${numRequest.join(', ')}] is safe.`,
+        message: `LOAN APPROVED. Ye le paisa, aur nikal.`,
         newAvailable: newAvailable,
-        newAllocationRow: newAllocation[p] 
+        newAllocationRow: newAllocation[p]
       });
     } else {
       // If unsafe, deny the request
       res.json({
         granted: false,
-        message: `DENIED: P${p} loan for [${numRequest.join(', ')}] would lead to an UNSAFE state. Process must wait.`
+        message: `LOAN DENIED! Ye scheme tere baap ka nahi hai. Bank doob jayega!`
       });
     }
 

@@ -19,7 +19,7 @@ export const SystemControlsPanel: React.FC<SystemControlsPanelProps> = ({
           className="w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded transition-colors flex items-center justify-center gap-2"
         >
           <Shield size={20} />
-          Audit: Check System Safety
+          Audit: Check Provisioning Status
         </button>
         <button
           onClick={onReset}

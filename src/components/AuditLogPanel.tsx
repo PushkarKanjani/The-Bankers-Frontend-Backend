@@ -17,14 +17,14 @@ export const AuditLogPanel: React.FC<AuditLogPanelProps> = ({ logs }) => {
   return (
     <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
       <h2 className="text-xl font-bold text-blue-400 mb-4">
-        Transaction & Safety Audit Log
+        Baburao ka Ledger
       </h2>
       <div
         ref={logContainerRef}
         className="bg-gray-900 rounded p-4 h-96 overflow-y-auto font-mono text-sm border border-gray-700"
       >
         {logs.length === 0 ? (
-          <p className="text-gray-500">No audit entries yet. Perform an action to begin logging.</p>
+          <p className="text-gray-500">No provisioning entries yet. Perform an action to begin logging.</p>
         ) : (
           <div className="space-y-1">
             {logs.map((log, index) => (

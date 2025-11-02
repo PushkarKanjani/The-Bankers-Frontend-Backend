@@ -17,7 +17,7 @@ export const SafetyReportPanel: React.FC<SafetyReportPanelProps> = ({
             <ShieldCheck size={32} className="text-green-500" />
             <div>
               <p className="text-green-400 text-lg font-bold">
-                SAFE: Sequence [{safetyStatus.sequence.join(', ')}]
+                PROVISIONING SAFE: Sequence [{safetyStatus.sequence.join(', ')}]
               </p>
               <p className="text-gray-400 text-sm mt-1">{safetyStatus.message}</p>
             </div>
@@ -29,7 +29,7 @@ export const SafetyReportPanel: React.FC<SafetyReportPanelProps> = ({
             <ShieldAlert size={32} className="text-red-500" />
             <div>
               <p className="text-red-400 text-lg font-bold">
-                UNSAFE: Deadlock Possible!
+                PROVISIONING UNSAFE: Deadlock Possible!
               </p>
               <p className="text-gray-400 text-sm mt-1">{safetyStatus.message}</p>
             </div>
@@ -45,7 +45,7 @@ export const SafetyReportPanel: React.FC<SafetyReportPanelProps> = ({
                 Run audit to check status
               </p>
               <p className="text-gray-600 text-sm mt-1">
-                Click "Audit: Check System Safety" to analyze the current state
+                Click "Audit: Check Provisioning Status" to analyze the current state
               </p>
             </div>
           </div>
@@ -55,7 +55,7 @@ export const SafetyReportPanel: React.FC<SafetyReportPanelProps> = ({
 
   return (
     <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-      <h2 className="text-xl font-bold text-cyan-400 mb-4">System Safety Status</h2>
+      <h2 className="text-xl font-bold text-cyan-400 mb-4">Bank Ka Haal</h2>
       <div className="bg-gray-900 rounded p-6 border border-gray-700">
         {getStatusDisplay()}
       </div>

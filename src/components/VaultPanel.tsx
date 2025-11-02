@@ -21,12 +21,12 @@ export const VaultPanel: React.FC<VaultPanelProps> = ({
   return (
     <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
       <h2 className="text-xl font-bold text-green-400 mb-4">
-        Vault: Total System Resources
+        Bank Ki Tijori (Total)
       </h2>
       <div className="space-y-4">
-        {['A', 'B', 'C'].map((label, idx) => (
+        {['Cash (Lakhs)', 'Gold (KGs)', 'Property (Plots)'].map((label, idx) => (
           <div key={label} className="flex items-center justify-between">
-            <label className="text-gray-300 font-medium">Resource {label}:</label>
+            <label className="text-gray-300 font-medium">{label}:</label>
             <input
               type="number"
               min="0"
@@ -41,9 +41,9 @@ export const VaultPanel: React.FC<VaultPanelProps> = ({
             Currently Available:
           </h3>
           <div className="space-y-2">
-            {['A', 'B', 'C'].map((label, idx) => (
+            {['Cash (Lakhs)', 'Gold (KGs)', 'Property (Plots)'].map((label, idx) => (
               <div key={label} className="flex items-center justify-between">
-                <span className="text-gray-400 text-sm">Resource {label}:</span>
+                <span className="text-gray-400 text-sm">{label}:</span>
                 <span className="text-blue-300 font-mono text-lg font-bold">
                   {availableResources[idx]}
                 </span>

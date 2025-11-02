@@ -19,28 +19,28 @@ export const AllocationTable: React.FC<AllocationTableProps> = ({
   return (
     <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
       <h2 className="text-xl font-bold text-purple-400 mb-4">
-        Client-Held Assets (Current Allocation)
+        Baata Hua Paisa (Current Loans)
       </h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gray-900">
               <th className="px-4 py-3 text-left text-gray-300 font-semibold border border-gray-700">
-                Client ID
+                Customer Ka Naam
               </th>
               <th className="px-4 py-3 text-center text-gray-300 font-semibold border border-gray-700">
-                A
+                Cash (Lakhs)
               </th>
               <th className="px-4 py-3 text-center text-gray-300 font-semibold border border-gray-700">
-                B
+                Gold (KGs)
               </th>
               <th className="px-4 py-3 text-center text-gray-300 font-semibold border border-gray-700">
-                C
+                Property (Plots)
               </th>
             </tr>
           </thead>
           <tbody>
-            {['P0', 'P1', 'P2', 'P3', 'P4'].map((processId, pIdx) => (
+            {['Raju', 'Shyam', 'Baburao', 'Totla Seth', 'Anuradha'].map((processId, pIdx) => (
               <tr key={processId} className="hover:bg-gray-750">
                 <td className="px-4 py-3 text-purple-400 font-mono font-semibold border border-gray-700">
                   {processId}
