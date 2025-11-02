@@ -1,10 +1,9 @@
 /*
  * =====================================================================
- * THE CORRECTED 'main.cjs' FILE WITH SECURITY POLICY
+ * FINAL 'main.cjs' FILE WITH SECURITY POLICY
  * =====================================================================
  */
-
-const { app, BrowserWindow, session } = require('electron'); // <-- 1. Import 'session'
+const { app, BrowserWindow, session } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -16,33 +15,29 @@ function createWindow() {
       contextIsolation: false
     }
   });
-
+  // This loads the built React app from the 'dist' folder
   win.loadFile(path.join(__dirname, 'dist', 'index.html'));
 }
 
-// This 'whenReady' block is the new, important part
+// This block is the fix for the '.exe' network error
 app.whenReady().then(() => {
-  
-  // 2. This is the fix. We are modifying the security policy.
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
     callback({
       responseHeaders: {
         ...details.responseHeaders,
-        // This line tells Electron:
-        // "Allow this app to connect ('connect-src') to itself ('self')
-        // AND to our live backend server on Render."
         'Content-Security-Policy': [
+          // Allow connections ('connect-src') to itself ('self')
+          // AND to our live Render backend.
           "connect-src 'self' https://the-bank-ers-backend.onrender.com"
         ]
       }
     });
   });
 
-  // 3. Create the window *after* setting the policy
   createWindow();
 });
 
-// Standard Electron code (leave this as-is)
+// Standard Electron window management
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
