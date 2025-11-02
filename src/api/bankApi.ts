@@ -1,6 +1,6 @@
 import { ApiCheckSafetyResponse, ApiRequestResourceResponse } from '../types';
 
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = 'https://the-bank-ers-backend.onrender.com';
 
 export const checkSafety = async (
   available: number[],
