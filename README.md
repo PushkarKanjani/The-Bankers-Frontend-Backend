@@ -18,33 +18,35 @@ No Local Server Needed: The app connects directly to the live backend hosted on 
 
 Test Scenarios
 1. Safe State (Test Case)
-Bank Ki Tijori (Total): Cash: 10, Gold: 5, Property: 7
+Bank Ki Tijori (Total): Cash: 12, Gold: 8, Property: 8
 
 Baata Hua Paisa (Current Loans):
 
-Raju: [0, 1, 0]
+Raju: [2, 1, 1]
 
-Shyam: [2, 0, 0]
+Shyam: [1, 2, 0]
 
-Baburao: [3, 0, 2]
+Baburao: [3, 0, 3]
 
-Totla Seth: [2, 1, 1]
+Totla Seth: [0, 2, 2]
 
-Anuradha: [0, 0, 2]
+Anuradha: [0, 0, 0]
 
 Kagaz Ke Hisaab Se (Max Loan):
 
-Raju: [7, 5, 3]
+Raju: [7, 3, 3]
 
-Shyam: [3, 2, 2]
+Shyam: [4, 2, 1]
 
-Baburao: [9, 0, 2]
+Baburao: [8, 4, 4]
 
-Totla Seth: [2, 2, 2]
+Totla Seth: [3, 3, 3]
 
-Anuradha: [4, 3, 3]
+Anuradha: [5, 2, 1]
 
 Result: Click "Audit" -> SAFE: [Shyam, Totla Seth, Anuradha, Raju, Baburao]
+
+Loan Application : Raju : [2, 1, 1]
 
 2. Unsafe State (Test Case)
 Use the same Allocation/Max tables as above, but set Tijori (Total) to: [8, 2, 5]
