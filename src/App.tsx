@@ -147,8 +147,27 @@ function App() {
         requestAmount
       );
 
-      if (response.granted && response.newAllocation && response.newAvailable) {
-        setAllocation(response.newAllocation);
+      if (response.granted) {
+        // We need to *correctly* update the 2D 'allocation' matrix.
+
+        // Find the index of the customer that just made the request
+        const customerNames = ["Raju", "Shyam", "Baburao", "Totla Seth", "Anuradha"];
+        const processIndex = customerNames.indexOf(processId);
+
+        // Create a new 2D array by mapping over the old one
+        const newAllocationMatrix = allocation.map((row, index) => {
+          if (index === processIndex) {
+            // If this is the row we just updated, return the new row from the server
+            return response.newAllocationRow;
+          } else {
+            // Otherwise, return the old row
+            return row;
+          }
+        });
+
+        // Set the new, correct 2D matrix as the state.
+        // This will also cause the 'Currently Available' panel to update automatically.
+        setAllocation(newAllocationMatrix);
         addLog(`✓ ${response.message}`);
         setErrorMessage('');
       } else {
