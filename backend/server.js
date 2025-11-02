@@ -12,11 +12,11 @@ import cors from 'cors';
 // 2. INITIALIZE THE APP
 const app = express();
 // Use the port Blackbox found. If it was 3001, leave it.
-const PORT = 3001; 
+const PORT = process.env.PORT || 3001;
 
 // 3. SET UP MIDDLEWARE
 // This allows your frontend (on port 5173) to talk to this backend
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors());
 // This allows the server to read JSON data from request bodies
 app.use(express.json());
 
