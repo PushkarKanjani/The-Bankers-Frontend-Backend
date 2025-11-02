@@ -34,6 +34,7 @@ function App() {
     message: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const calculateAvailableResources = (): number[] => {
     const allocated = allocation.reduce(
@@ -125,6 +126,7 @@ function App() {
 
   const handleSubmitRequest = async (processId: string, requestAmount: number[]) => {
     setErrorMessage('');
+    setSuccessMessage('');
 
     const available = calculateAvailableResources();
     const hasEnoughResources = requestAmount.every((req, idx) => req <= available[idx]);
@@ -133,7 +135,7 @@ function App() {
       const errorMsg = `Invalid request: Not enough available resources for ${processId}`;
       setErrorMessage(errorMsg);
       addLog(`✗ ${errorMsg}`);
-      setTimeout(() => setErrorMessage(''), 5000);
+      setTimeout(() => setErrorMessage(''), 3000);
       return;
     }
 
@@ -158,7 +160,7 @@ function App() {
         const newAllocationMatrix = allocation.map((row, index) => {
           if (index === processIndex) {
             // If this is the row we just updated, return the new row from the server
-            return response.newAllocationRow;
+            return response.newAllocation?.[processIndex] || row;
           } else {
             // Otherwise, return the old row
             return row;
@@ -169,17 +171,19 @@ function App() {
         // This will also cause the 'Currently Available' panel to update automatically.
         setAllocation(newAllocationMatrix);
         addLog(`✓ ${response.message}`);
+        setSuccessMessage("LOAN APPROVED. Ye le paisa, aur nikal.");
+        setTimeout(() => setSuccessMessage(''), 3000);
         setErrorMessage('');
       } else {
         setErrorMessage(response.message);
         addLog(`✗ ${response.message}`);
-        setTimeout(() => setErrorMessage(''), 5000);
+        setTimeout(() => setErrorMessage(''), 3000);
       }
     } catch (error) {
       const errorMsg = 'Failed to connect to server. Is it running?';
       addLog(`Error: ${errorMsg}`);
       setErrorMessage(errorMsg);
-      setTimeout(() => setErrorMessage(''), 5000);
+      setTimeout(() => setErrorMessage(''), 3000);
     }
   };
 
@@ -227,6 +231,7 @@ function App() {
           <LoanRequestPanel
             onSubmitRequest={handleSubmitRequest}
             errorMessage={errorMessage}
+            successMessage={successMessage}
           />
           <SystemControlsPanel
             onCheckSafety={handleCheckSafety}

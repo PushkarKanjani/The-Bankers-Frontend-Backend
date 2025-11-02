@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 interface LoanRequestPanelProps {
   onSubmitRequest: (processId: string, request: number[]) => void;
   errorMessage: string;
+  successMessage: string;
 }
 
 export const LoanRequestPanel: React.FC<LoanRequestPanelProps> = ({
   onSubmitRequest,
   errorMessage,
+  successMessage,
 }) => {
   const [selectedProcess, setSelectedProcess] = useState('P0');
   const [requestAmounts, setRequestAmounts] = useState([0, 0, 0]);
@@ -75,6 +77,11 @@ export const LoanRequestPanel: React.FC<LoanRequestPanelProps> = ({
         {errorMessage && (
           <div className="mt-2 p-3 bg-red-900/30 border border-red-600 rounded">
             <p className="text-red-400 text-sm">{errorMessage}</p>
+          </div>
+        )}
+        {successMessage && (
+          <div className="mt-2 p-3 bg-green-900/30 border border-green-600 rounded">
+            <p className="text-green-400 text-sm">{successMessage}</p>
           </div>
         )}
       </div>

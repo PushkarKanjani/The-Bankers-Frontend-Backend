@@ -1,5 +1,7 @@
-# Final Build Check TODO
+# Add Success Message for Loan Approval
 
-- [x] Step 1: Update API_BASE_URL in project/src/api/bankApi.ts to 'https://the-bank-ers-backend.onrender.com'
-- [x] Step 2: Replace content in project/main.cjs with the new security policy version
-- [x] Confirm all four steps are completed (vite.config.ts and package.json already correct)
+- [x] Add successMessage state in App.tsx
+- [x] Update handleSubmitRequest to set successMessage when granted, with timer to clear after 3 seconds
+- [x] Update errorMessage clearing timer to 3 seconds
+- [x] Pass successMessage to LoanRequestPanel
+- [x] Add success message display in LoanRequestPanel JSX
